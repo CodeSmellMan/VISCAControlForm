@@ -28,10 +28,7 @@ namespace CppWinForm1 {
 				MessageBox::Show("COM-port finnes ikke eller er opptatt",
 				"Kunne ikke åpne COM-port",
 				MessageBoxButtons::OK,
-				//MessageBoxIcon::Warning // for Warning
 				MessageBoxIcon::Error // for Error
-				//MessageBoxIcon.Information  // for Information
-				//MessageBoxIcon.Question // for Question
 				);
 				Application::Exit();
 			}
