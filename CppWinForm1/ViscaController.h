@@ -30,7 +30,7 @@ public:
 	void getPanTilt(int &pan, int &tilt); //Spør kamera om hvilken pan og tilt det har. Setter panCurr og tiltCurr
 	void getZoom(int &zoom);			  //Spør kamera om hvilken zoom det har. Setter zoomCurr
 
-	void setAddress();					  //Broadcast hvor kameraene i daisy-chain sender videre sin addresse+1
+	int setAddress();					  //Broadcast hvor kameraene i daisy-chain sender videre sin addresse+1
 
 
 };

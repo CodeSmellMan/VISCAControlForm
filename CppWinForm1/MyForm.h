@@ -33,8 +33,29 @@ namespace CppWinForm1 {
 				Application::Exit();
 			}
 			cam1 = new ViscaController(1, sHandler);
-			cam2 = new ViscaController(2, sHandler);
-			cam1->setAddress();
+			camsConnected = cam1->setAddress() - 1;
+			if (camsConnected == 2)
+			{
+				cam2 = new ViscaController(2, sHandler);
+			}
+			else if(camsConnected == 1)
+			{
+				cam2btn->Visible = false;
+				MessageBox::Show("Det ser ut til at kamera 2 ikke er tilkoblet. Koble det til og restart applikasjonen for å bruke det.",
+					"Kamera 2 ikke funnet",
+					MessageBoxButtons::OK,
+					MessageBoxIcon::Warning // for Error
+				);
+			}
+			else
+			{
+				MessageBox::Show("Ingen kameraer koblet til, eller noe gikk galt. Koble til kameraene og restart",
+					"Feil",
+					MessageBoxButtons::OK,
+					MessageBoxIcon::Error // for Error
+				);
+				Application::Exit();
+			}
 			currentCam = cam1;
 		
 			panStep = 50;
@@ -107,6 +128,8 @@ namespace CppWinForm1 {
 		int tiltStep;
 
 		bool precisionMode;
+
+		int camsConnected;
 
 	private: System::Windows::Forms::PictureBox^  runding;
 	private: System::Windows::Forms::Panel^  joystickPanel;

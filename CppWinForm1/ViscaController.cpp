@@ -182,7 +182,7 @@ void ViscaController::getZoom(int &zoom)
 	sHandler->getZoom(zoom);
 }
 
-void ViscaController::setAddress()
+int ViscaController::setAddress()
 {
 	ViscaPacket packet;
 
@@ -198,5 +198,7 @@ void ViscaController::setAddress()
 	packet.addByte(terminator);
 
 	sHandler->sendPacket(packet);
+	Sleep(2000);
+	return sHandler->getConnectedCameras();
 }
 

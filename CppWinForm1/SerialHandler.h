@@ -14,6 +14,7 @@ public:
 	void getPanTilt(int &pan, int &tilt);	//Leser det som kommer på serial porten, tar utgangspunkt i inquiery om pan og tilt posisjon
 	void getZoom(int &zoom);				//Leser det som kommer på serial porten, tar utgangspunkt i inquiery om zoom
 	bool getCOMopened();
+	int getConnectedCameras();
 
 private:
 	HANDLE hSerial;

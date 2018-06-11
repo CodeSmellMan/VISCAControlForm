@@ -17,6 +17,8 @@ SerialHandler::SerialHandler()
 	else
 	{
 		COMopened = true;
+
+
 	}
 
 	dcbSerialParams = { 0 };
@@ -100,4 +102,19 @@ void SerialHandler::getZoom(int &zoom)
 bool SerialHandler::getCOMopened()
 {
 	return COMopened;
+}
+
+int SerialHandler::getConnectedCameras()
+{
+	DWORD bytes_read;
+
+	unsigned char buffer[4];
+
+	ReadFile(hSerial, &buffer, sizeof(buffer), &bytes_read, NULL);
+	std::cout << "bytes read: " << bytes_read << std::endl;
+	std::cout << "byte: " << (unsigned char)buffer[2] << std::endl;
+
+	int numberCams = (int)(unsigned char)buffer[2];
+
+	return numberCams;
 }
